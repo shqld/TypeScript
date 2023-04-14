@@ -4983,6 +4983,7 @@ export interface TypeChecker {
     /** @internal */ getNonOptionalType(type: Type): Type;
     /** @internal */ isNullableType(type: Type): boolean;
     getTypeArguments(type: TypeReference): readonly Type[];
+    getTypeArgumentsFromSignature(signature: Signature): Array<Type> | undefined
 
     // TODO: GH#18217 `xToDeclaration` calls are frequently asserted as defined.
     /** Note that the resulting nodes cannot be checked. */

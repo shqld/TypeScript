@@ -1553,6 +1553,9 @@ export function createTypeChecker(host: TypeCheckerHost): TypeChecker {
         getNonNullableType,
         getNonOptionalType: removeOptionalTypeMarker,
         getTypeArguments,
+        getTypeArgumentsFromSignature(signature: Signature): Type[] | undefined {
+            return signature.target?.typeParameters?.map(parameter => instantiateType(parameter, signature.mapper))
+        },
         typeToTypeNode: nodeBuilder.typeToTypeNode,
         indexInfoToIndexSignatureDeclaration: nodeBuilder.indexInfoToIndexSignatureDeclaration,
         signatureToSignatureDeclaration: nodeBuilder.signatureToSignatureDeclaration,
